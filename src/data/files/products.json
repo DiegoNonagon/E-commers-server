@@ -1,0 +1,322 @@
+[
+  {
+    "title": "Lanzallamas",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "Stout",
+    "stock": "10",
+    "id": "edfac7daf2a98f3a0eecd032"
+  },
+  {
+    "title": "Super Lupe",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "Lager",
+    "stock": "10",
+    "id": "bca4a75805084576d99720b3"
+  },
+  {
+    "title": "Pie Grande",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "90",
+    "category": "Porter",
+    "stock": "10",
+    "id": "11d6b66c5bdf1c9e0f73f4f3"
+  },
+  {
+    "title": "Buen Chofer",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Lager",
+    "stock": "10",
+    "id": "664eac1dec04a7cc17043641"
+  },
+  {
+    "title": "Portero Delantero",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "140",
+    "category": "IPA",
+    "stock": "10",
+    "id": "695633febaa6a400b4b492fe"
+  },
+  {
+    "title": "Viajesote",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Lager",
+    "stock": "10",
+    "id": "d7f1622b2cc28ab73bb9dcd2"
+  },
+  {
+    "title": "Superlager",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "Lager",
+    "stock": "10",
+    "id": "2814f44bb79484b2c654b5fa"
+  },
+  {
+    "title": "Metropolis",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "140",
+    "category": "IPA",
+    "stock": "10",
+    "id": "8814204d94b97fa08c18deb4"
+  },
+  {
+    "title": "Puebito",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "130",
+    "category": "Stout",
+    "stock": "10",
+    "id": "21b81d5cb3a9584eccf91103"
+  },
+  {
+    "title": "Lagermaiz",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "Lager",
+    "stock": "10",
+    "id": "5210ee7309da6b1e868de39f"
+  },
+  {
+    "title": "Caballo Blanco",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "110",
+    "category": "Lager",
+    "stock": "10",
+    "id": "5f98dafa4442be220cefecf0"
+  },
+  {
+    "title": "Faro",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "IPA",
+    "stock": "10",
+    "id": "5ca9aed8005b4f22eb1175f8"
+  },
+  {
+    "title": "ASTRO",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "90",
+    "category": "Lager",
+    "stock": "10",
+    "id": "8ca4cc5ceb8e4bb78886f254"
+  },
+  {
+    "title": "Martillo",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "90",
+    "category": "Lager",
+    "stock": "10",
+    "id": "22a64c6aac6575e375c19ad8"
+  },
+  {
+    "title": "Hombre Pajaro",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "Lager",
+    "stock": "10",
+    "id": "39a82a1fc3d32a17adaae7a0"
+  },
+  {
+    "title": "Macanuda",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "70",
+    "category": "Porter",
+    "stock": "10",
+    "id": "d9218276d90d208bf33ebc8c"
+  },
+  {
+    "title": "Terrícola",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "IPA",
+    "stock": "10",
+    "id": "53ad596708551efc9d20b8e9"
+  },
+  {
+    "title": "Ráfaga",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "Pale Ale",
+    "stock": "10",
+    "id": "544ae16ad4d82c87ee5de358"
+  },
+  {
+    "title": "Raymundo Centeno",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Pale Ale",
+    "stock": "10",
+    "id": "33a42592bc36732bc25eb7cd"
+  },
+  {
+    "title": "Spinning Jenny",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "130",
+    "category": "Pale Ale",
+    "stock": "10",
+    "id": "93d82893efb34d460626d10f"
+  },
+  {
+    "title": "Juan Cordero",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "Pale Ale",
+    "stock": "10",
+    "id": "6da947e229334874dfa20935"
+  },
+  {
+    "title": "La Lupulosa",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "IPA",
+    "stock": "10",
+    "id": "531ee87dddd963d8ef71c238"
+  },
+  {
+    "title": "Rompeolas",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "IPA",
+    "stock": "10",
+    "id": "8825d8c10acb16d2b5057cfa"
+  },
+  {
+    "title": "Dragula",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "Stout",
+    "stock": "10",
+    "id": "5abdb131d62830381f80c2cf"
+  },
+  {
+    "title": "Tiniebla",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "80",
+    "category": "Lager",
+    "stock": "10",
+    "id": "cacb09547316ea31f719fb1b"
+  },
+  {
+    "title": "Simcoe De Mayo",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "IPA",
+    "stock": "10",
+    "id": "8a37287571c0d2bdcba827bb"
+  },
+  {
+    "title": "Xocoveza",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "Stout",
+    "stock": "10",
+    "id": "5d686ad2fd4c00929585460e"
+  },
+  {
+    "title": "Hops & Chill",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "IPA",
+    "stock": "10",
+    "id": "492fe51ac744540023c9eb3a"
+  },
+  {
+    "title": "Nocturna",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "IPA",
+    "stock": "10",
+    "id": "e34455c3cd4122c0704605dc"
+  },
+  {
+    "title": "Santa´s Red",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "100",
+    "category": "Lager",
+    "stock": "10",
+    "id": "dab867ba97517c72ea863344"
+  },
+  {
+    "title": "Danza Macabra",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Stout",
+    "stock": "10",
+    "id": "95c8f72096680701e2d1f3e6"
+  },
+  {
+    "title": "Helium",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Lager",
+    "stock": "10",
+    "id": "d7a649d84785b6aba383277c"
+  },
+  {
+    "title": "Penélope",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Porter",
+    "stock": "10",
+    "id": "a51df1ffae5fc6900dec8774"
+  },
+  {
+    "title": "Cuatrimoto",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Stout",
+    "stock": "10",
+    "id": "5a5f56cd779db5076509c170"
+  },
+  {
+    "title": "Astillero",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "IPA",
+    "stock": "10",
+    "id": "d3634c60e43aa178ffea9380"
+  },
+  {
+    "title": "Peyote",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "IPA",
+    "stock": "10",
+    "id": "2cd44f6101deecc8d4f6b4f4"
+  },
+  {
+    "title": "La Perversa",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "IPA",
+    "stock": "10",
+    "id": "8aac3ad167a87fb89d926af8"
+  },
+  {
+    "title": "Brutal Imerial Stout",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Stout",
+    "stock": "10",
+    "id": "561dae9d883dd9ba57502dfc"
+  },
+  {
+    "title": "Bichetera",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "IPA",
+    "stock": "10",
+    "id": "9cdd62ce579e793139e012d0"
+  },
+  {
+    "title": "Cayaco",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "price": "120",
+    "category": "Lager",
+    "stock": "10",
+    "id": "dd4f49db51ef5c61a89c78a2"
+  }
+]
