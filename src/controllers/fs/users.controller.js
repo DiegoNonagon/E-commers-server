@@ -42,7 +42,7 @@ async function createGet(req, res, next) {
       address = "none";
     }
     if (!isOnline) {
-      isOnline = "none";
+      isOnline = false;
     }
     const response = await usersManager.create({
       name,

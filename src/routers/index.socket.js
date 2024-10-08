@@ -1,4 +1,5 @@
 import usersManager from "../data/fs/users.manager.js";
+import productsManager from "../data/fs/products.manager.js"; // Importa el productsManager
 
 const socketCb = async (socket) => {
   console.log("socket connected id: " + socket.id);
@@ -15,17 +16,35 @@ const socketCb = async (socket) => {
         const userId = await usersManager.create({
           name: data.name,
           email: data.email,
-          password: data.password, // Puedes encriptar la contraseña aquí
-          photo: data.photo, // Guardar la URL de la foto
+          password: data.password,
+          photo: data.photo,
         });
 
         const updatedUsers = await usersManager.readAll();
         socket.emit("registrationSuccess", "Usuario registrado exitosamente.");
-        socket.broadcast.emit("update users", updatedUsers); // Emitir actualización a otros usuarios
+        socket.broadcast.emit("update users", updatedUsers);
       }
     } catch (error) {
       console.error("Error registering new user:", error);
       socket.emit("registrationError", "Error en el registro de usuario.");
+    }
+  });
+
+  // Manejo de nuevo producto
+  socket.on("new product", async (productData) => {
+    try {
+      const newProductId = await productsManager.create(productData);
+      const allProducts = await productsManager.readAll();
+
+      // Emitir el nuevo producto a todos los clientes
+      socket.emit("productCreated", {
+        message: "Producto creado exitosamente",
+        product: newProductId,
+      });
+      socket.broadcast.emit("update products", allProducts);
+    } catch (error) {
+      console.error("Error creando producto:", error);
+      socket.emit("productError", "Error en la creación del producto.");
     }
   });
 
@@ -36,6 +55,15 @@ const socketCb = async (socket) => {
   } catch (error) {
     console.error("Error fetching users:", error);
     socket.emit("update users", []);
+  }
+
+  // Envía la lista de productos cuando un cliente se conecta
+  try {
+    const allProducts = await productsManager.readAll();
+    socket.emit("update products", allProducts);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    socket.emit("update products", []);
   }
 };
 

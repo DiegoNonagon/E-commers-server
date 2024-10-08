@@ -318,5 +318,13 @@
     "category": "Lager",
     "stock": "10",
     "id": "dd4f49db51ef5c61a89c78a2"
+  },
+  {
+    "title": "Corona",
+    "price": "25",
+    "stock": "10",
+    "category": "lager",
+    "photo": "https://www.cristoro.cl/sites/255/upload/art_56f4407dc0712.jpg",
+    "id": "a0d37e5624e5f25d63af12f6"
   }
 ]

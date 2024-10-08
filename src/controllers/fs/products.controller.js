@@ -155,6 +155,10 @@ async function showOneProduct(req, res, next) {
   }
 }
 
+function createProductView(req, res) {
+  res.render("createProduct", {}); // Renderiza la vista para crear productos
+}
+
 export {
   getAllProducts,
   getProduct,
@@ -164,4 +168,5 @@ export {
   destroyProduct,
   showProducts,
   showOneProduct,
+  createProductView,
 };
