@@ -5,8 +5,8 @@ import {
   createProduct,
   updateProduct,
   destroyProduct,
-} from "../../controllers/products.controller.js";
-import isValidData from "../../middlewares/isValidData.mid.js";
+} from "../../../controllers/fs/products.controller.js";
+import isValidData from "../../../middlewares/isValidData.mid.js";
 
 const productsRouter = Router();
 

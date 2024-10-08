@@ -5,8 +5,8 @@ import {
   createUser,
   updateUser,
   destroyUser,
-} from "../../controllers/users.controller.js";
-import isValidUserData from "../../middlewares/isValidUserData.js";
+} from "../../../controllers/fs/users.controller.js";
+import isValidUserData from "../../../middlewares/isValidUserData.js";
 
 const userRouter = Router();
 

@@ -1,4 +1,4 @@
-import usersManager from "../data/users.manager.js";
+import usersManager from "../../data/memory/users.manager.js";
 
 async function getAllUsers(req, res, next) {
   try {
@@ -34,12 +34,15 @@ async function getUser(req, res, next) {
 async function createGet(req, res, next) {
   try {
     const { name, email, password, photo, roll } = req.params;
-    let { age, address } = req.query;
+    let { age, address, isOnline } = req.query;
     if (!age) {
       age = "none";
     }
     if (!address) {
       address = "none";
+    }
+    if (!isOnline) {
+      isOnline = "none";
     }
     const response = await usersManager.create({
       name,
@@ -107,4 +110,21 @@ async function destroyUser(req, res, next) {
   }
 }
 
-export { getAllUsers, getUser, createGet, createUser, updateUser, destroyUser };
+const registerView = async (req, res, next) => {
+  try {
+    const users = await usersManager.readAll();
+    return res.render("register", { users });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export {
+  getAllUsers,
+  getUser,
+  createGet,
+  createUser,
+  updateUser,
+  destroyUser,
+  registerView,
+};

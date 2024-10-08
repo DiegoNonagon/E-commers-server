@@ -18,10 +18,16 @@ class UsersManager {
     }
   }
 
-  async readAll() {
+  async readAll(role) {
     try {
       const data = await fs.promises.readFile(this.path, "utf-8");
-      return JSON.parse(data);
+      const parseData = JSON.parse(data);
+      if (role) {
+        const filterData = parseData.filter((each) => each.role === role);
+        return filterData;
+      } else {
+        return parseData;
+      }
     } catch (error) {
       console.error("Error reading all users:", error);
       throw error;
@@ -83,6 +89,19 @@ class UsersManager {
       return `User with id ${id} deleted`; // Mensaje de confirmación
     } catch (error) {
       console.error("Error deleting user:", error);
+      throw error;
+    }
+  }
+
+  async validateUser(email, password) {
+    try {
+      const allUsers = await this.readAll();
+      const user = allUsers.find(
+        (user) => user.email === email && user.password === password
+      );
+      return user ? user : null; // Devuelve el usuario si las credenciales son correctas
+    } catch (error) {
+      console.error("Error validating user:", error);
       throw error;
     }
   }

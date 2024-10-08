@@ -1,0 +1,66 @@
+body {
+  background-image: linear-gradient(
+    45deg,
+    hsl(46, 89%, 40%) 0%,
+    hsl(45, 88%, 43%) 9%,
+    hsl(44, 87%, 46%) 18%,
+    hsl(43, 86%, 49%) 27%,
+    hsl(43, 88%, 50%) 36%,
+    hsl(45, 89%, 50%) 45%,
+    hsl(47, 91%, 49%) 55%,
+    hsl(48, 95%, 49%) 64%,
+    hsl(50, 97%, 49%) 73%
+  );
+}
+
+* {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: white;
+}
+
+.cont-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background-color: #000;
+  width: 100%;
+  height: 10rem;
+  margin-top: 3rem;
+}
+
+.cont-footer-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 1rem;
+  gap: 25%;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.cont-footer-items-redes {
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-items-parrafo {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  color: white;
+}
+
+.redes-logo {
+  width: 2.5rem;
+  margin: 1rem;
+  transition: all 0.5s ease;
+  border-radius: 12px;
+}
+
+.redes-logo:hover {
+  width: 3rem;
+  margin: 0.5rem;
+}
