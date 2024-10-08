@@ -1,0 +1,93 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Casa De Lupulo</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-white px-5 border-bottom border-3 border-black"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img
+            style="width: 100px;"
+            src="/public/assets/logo1.jpg"
+            alt="Lupulo"
+          /></a>
+        <img
+          style="width:200px;"
+          src="/public/assets/logo2.jpg"
+          alt="La Casa de Lupulo"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/products"
+              >Products</a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="/users/register">Register</a>
+            </li>
+            <li>
+              <a class="nav-link active" aria-current="page" href="/users/login">Login</a>
+            </li>
+          </ul>
+          {{#if user}}
+        <span class="navbar-text">
+          Welcome, {{userData.name}}!
+        </span>
+        <a class="nav-link" href="/users/logout">Logout</a>
+      {{/if}}
+        </div>
+      </div>
+    </nav>
+    <main>
+      {{{body}}}
+    </main>
+    <footer class="cont-footer">
+        <div class="cont-footer-items"></div>
+
+            <div class="footer-items-parrafo">
+
+             <p>
+                Copyright La Casa De Lúpulo © 2024
+             </p>
+            </div>   
+            <div class="footer-items-redes">
+                <a href="https://www.instagram.com/lacasadellupulo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                    <img  class="redes-logo" src="/public/assets/insta-logo.png" alt="Instagram">
+                </a>
+            </div> 
+        </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/public/js/socket.js"></script>
+  <script src="/public/js/createProduct.socket.js"></script>
+  </body>
+</html>

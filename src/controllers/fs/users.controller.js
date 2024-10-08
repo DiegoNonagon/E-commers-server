@@ -1,4 +1,4 @@
-import usersManager from "../data/users.manager.js";
+import usersManager from "../../data/fs/users.manager.js";
 
 async function getAllUsers(req, res, next) {
   try {
@@ -34,12 +34,15 @@ async function getUser(req, res, next) {
 async function createGet(req, res, next) {
   try {
     const { name, email, password, photo, roll } = req.params;
-    let { age, address } = req.query;
+    let { age, address, isOnline } = req.query;
     if (!age) {
       age = "none";
     }
     if (!address) {
       address = "none";
+    }
+    if (!isOnline) {
+      isOnline = false;
     }
     const response = await usersManager.create({
       name,
@@ -107,4 +110,69 @@ async function destroyUser(req, res, next) {
   }
 }
 
-export { getAllUsers, getUser, createGet, createUser, updateUser, destroyUser };
+const registerView = async (req, res, next) => {
+  try {
+    const users = await usersManager.readAll();
+    return res.render("register", { users });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const loginView = async (req, res, next) => {
+  try {
+    // Aquí puedes hacer alguna lectura de datos si fuera necesario,
+    // en este caso no se requiere, pero sigue la misma lógica del register
+    return res.render("login");
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const validateUser = async (req, res, next) => {
+  const { email, password } = req.body;
+  try {
+    const user = await usersManager.validateUser(email, password);
+    if (user) {
+      req.session.user = user; // Almacena el usuario en la sesión
+      return res.redirect("/users/dashboard"); // Redirige al dashboard
+    } else {
+      return res.status(401).render("login", { error: "Invalid credentials" }); // Muestra el error
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const dashboardView = (req, res, next) => {
+  if (!req.session.user) {
+    return res.redirect("/login"); // Redirige si no está autenticado
+  }
+
+  const user = req.session.user; // Obtén el usuario de la sesión
+  return res.render("dashboard", { user }); // Renderiza el dashboard con el usuario
+};
+
+const logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.redirect("/users/dashboard"); // O redirige a donde prefieras
+    }
+    res.clearCookie("connect.sid"); // Asegúrate de que coincide con tu cookie
+    res.redirect("/users/login"); // Redirige al login después de cerrar sesión
+  });
+};
+
+export {
+  getAllUsers,
+  getUser,
+  createGet,
+  createUser,
+  updateUser,
+  destroyUser,
+  registerView,
+  loginView,
+  validateUser,
+  dashboardView,
+  logout,
+};

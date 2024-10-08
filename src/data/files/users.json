@@ -4,9 +4,10 @@
     "email": "coder.admin@mail.com",
     "password": "***********",
     "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-    "roll": "Administrador",
+    "role": "Administrador",
     "age": "27",
     "address": "Calle generica, colonia algo, estado, Mex.",
+    "isOnline": "False",
     "id": "23187e920c347629f852843c"
   },
   {
@@ -14,9 +15,10 @@
     "email": "coder.user@mail.com",
     "password": "***********",
     "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-    "roll": "Usuario",
+    "role": "Usuario",
     "age": "30",
     "address": "Calle generica, colonia algo, estado, Argentina.",
+    "isOnline": "False",
     "id": "495ad45232f792deee6b5fce"
   },
   {
@@ -24,9 +26,10 @@
     "email": "coder.user@mail.com",
     "password": "***********",
     "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-    "roll": "Usuario",
+    "role": "Usuario",
     "age": "23",
     "address": "Calle generica, colonia algo, estado, Mex.",
+    "isOnline": "False",
     "id": "871e60f27a46bdeaf954df2e"
   },
   {
@@ -34,9 +37,10 @@
     "email": "coder.user@mail.com",
     "password": "***********",
     "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-    "roll": "Usuario",
+    "role": "Usuario",
     "age": "29",
     "address": "Calle generica, colonia algo, estado, Mex.",
+    "isOnline": "False",
     "id": "7f263ce144b896507d5a8c2e"
   },
   {
@@ -44,9 +48,18 @@
     "email": "coder.user@mail.com",
     "password": "***********",
     "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-    "roll": "Usuario",
+    "role": "Usuario",
     "age": "55",
     "address": "Calle generica, colonia algo, estado, Mex.",
+    "isOnline": "False",
     "id": "7866060b9de699b2c13a81c4"
+  },
+  {
+    "name": "Diego Cruz Herrera",
+    "email": "diegoch9630@gmail.com",
+    "password": "qwerty",
+    "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+    "id": "95cec5ab21b50adb51083392",
+    "isOnline": "False"
   }
 ]

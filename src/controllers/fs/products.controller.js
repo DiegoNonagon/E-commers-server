@@ -1,4 +1,4 @@
-import productsManager from "../data/products.manager.js";
+import productsManager from "../../data/fs/products.manager.js";
 
 async function getAllProducts(req, res, next) {
   try {
@@ -115,6 +115,50 @@ async function destroyProduct(req, res, next) {
   }
 }
 
+async function showProducts(req, res, next) {
+  try {
+    let { category } = req.query;
+    let all;
+    if (!category) {
+      all = await productsManager.readAll();
+    } else {
+      all = await productsManager.readAll(category);
+    }
+    if (all.length > 0) {
+      return res.render("products", { products: all });
+      // render habilita de forma opcional un segundo parametro
+      // para enviar datos a la plantilla de handlebars
+    } else {
+      const error = new Error("NOT FOUND PRODUCTS");
+      error.statusCode = 404;
+      throw error;
+    }
+  } catch (error) {
+    return next(error);
+  }
+}
+async function showOneProduct(req, res, next) {
+  // res es el objeto de respuesta a enviar al cliente
+  try {
+    const { pid } = req.params;
+    const response = await productsManager.read(pid);
+    // response es la respuesta que se espera del manager (para leer un producto)
+    if (response) {
+      return res.render("oneproduct", { one: response });
+    } else {
+      const error = new Error("NOT FOUND PRODUCT");
+      error.statusCode = 404;
+      throw error;
+    }
+  } catch (error) {
+    return next(error);
+  }
+}
+
+function createProductView(req, res) {
+  res.render("createProduct", {}); // Renderiza la vista para crear productos
+}
+
 export {
   getAllProducts,
   getProduct,
@@ -122,4 +166,7 @@ export {
   createProduct,
   updateProduct,
   destroyProduct,
+  showProducts,
+  showOneProduct,
+  createProductView,
 };

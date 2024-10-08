@@ -1,0 +1,52 @@
+<h2 class="modal-title p-3 mx-4">Products</h2>
+
+<a class="nav-link active m-3" href="/products/create">Agregar producto</a>
+
+<section class="d-flex flex-wrap justify-content-center gap-3">
+  {{#each products}}
+    <a
+      href="/products/{{this.id}}"
+      class="card"
+      style="width: 13rem; text-decoration:none;"
+    >
+      <img
+        src={{this.photo}}
+        class="card-img-top"
+        width="80px"
+        height="200px"
+        alt="Cerveza"
+      />
+      <div class="card-body">
+        {{#if this.title}}
+          <h5 class="card-title">{{this.title}}</h5>
+        {{else}}
+          <h5>Producto sin nombre</h5>
+        {{/if}}
+      </div>
+      <ul class="list-group list-group-flush">
+        {{#if this.category}}
+          <li class="list-group-item">{{this.category}}</li>
+        {{else}}
+          <li class="list-group-item">Producto sin categoría</li>
+        {{/if}}
+        {{#if this.stock}}
+          <li class="list-group-item">{{this.stock}} u.</li>
+        {{else}}
+          <li class="list-group-item">0 u.</li>
+        {{/if}}
+        {{#if this.price}}
+          <li class="list-group-item">$ {{this.price}}</li>
+        {{else}}
+          <li class="list-group-item">$ .-</li>
+        {{/if}}
+      </ul>
+      <div class="card-body">
+        <button
+          href="/products/{{this.id}}"
+          type="button"
+          class="btn btn-warning"
+        >Detalle</button>
+      </div>
+    </a>
+  {{/each}}
+</section>
