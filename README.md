@@ -1,4 +1,4 @@
-### Documentación del Secon challenge: Implementación de Registro, Login y Gestión de Productos
+### Documentación del Second challenge: Implementación de Registro, Login y Gestión de Productos
 
 ---
 
