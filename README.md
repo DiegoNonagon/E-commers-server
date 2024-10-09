@@ -1,3 +1,239 @@
+### Documentación del Second challenge: Implementación de Registro, Login y Gestión de Productos
+
+---
+
+#### **1. Introducción**
+
+Este proyecto es una aplicación web donde los usuarios pueden registrarse, iniciar sesión y gestionar productos. Utiliza tecnologías como `Express`, `Socket.IO`, `Handlebars`, y el sistema de archivos (`File System`) para manejar la creación, actualización y visualización de productos y usuarios.
+
+---
+
+#### **2. Estructura del Proyecto**
+
+El proyecto está organizado de la siguiente manera:
+
+```
+- src/
+  - controllers/
+    - fs/
+      - users.controller.js
+      - products.controller.js
+  - data/
+    - fs/
+      - users.manager.js
+      - products.manager.js
+  - middlewares/
+    - errorHandler.mid.js
+    - pathHandler.mid.js
+    - userRender.mid.js
+  - routers/
+    - index.router.js
+    - usersView.router.js
+    - index.socket.js
+  - views/
+    - layouts/
+      - main.handlebars
+    - login.handlebars
+    - register.handlebars
+    - products.handlebars
+    - dashboard.handlebars
+  - public/
+    - css/
+    - js/
+  - utils.js
+- server.js
+```
+
+---
+
+#### **3. Registro de Usuarios**
+
+##### **3.1. Estructura de Usuario**
+Cada usuario tiene los siguientes atributos:
+
+- **name**: Nombre del usuario.
+- **email**: Correo electrónico del usuario.
+- **password**: Contraseña del usuario (sin cifrar en este ejemplo).
+- **photo**: URL de la foto del usuario.
+
+##### **3.2. Vista de Registro (`register.handlebars`)**
+
+El formulario para registrar un nuevo usuario tiene los campos `name`, `email`, `password`, y `photo`. Usa Bootstrap para estilizar el formulario y Socket.IO para la comunicación en tiempo real.
+
+```html
+<form id="registerForm">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+  <div class="mb-3">
+    <label for="photo" class="form-label">Photo URL</label>
+    <input type="text" class="form-control" id="photo" name="photo" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
+```
+
+##### **3.3. Controlador de Registro (`users.controller.js`)**
+
+El controlador para registrar un nuevo usuario es responsable de verificar si el correo electrónico ya está en uso y, si no lo está, crear el nuevo usuario y emitir un evento de actualización de usuarios a todos los clientes conectados mediante Socket.IO.
+
+```javascript
+const registerView = async (req, res, next) => {
+  try {
+    const users = await usersManager.readAll();
+    return res.render("register", { users });
+  } catch (error) {
+    return next(error);
+  }
+};
+```
+
+##### **3.4. Socket.IO para Registro**
+
+```javascript
+socket.on("new user", async (data) => {
+  // Verificación y creación del usuario
+});
+```
+
+---
+
+#### **4. Login de Usuarios**
+
+##### **4.1. Vista de Login (`login.handlebars`)**
+
+```html
+<form id="loginForm">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+```
+
+##### **4.2. Controlador de Login**
+
+```javascript
+const loginView = async (req, res, next) => {
+  try {
+    const users = await usersManager.readAll();
+    return res.render("login", { users });
+  } catch (error) {
+    return next(error);
+  }
+};
+```
+
+Cuando el usuario se loguea correctamente, se redirige al **dashboard** donde puede ver y gestionar productos.
+
+---
+
+#### **5. Gestión de Productos**
+
+##### **5.1. Estructura de Producto**
+Cada producto tiene los siguientes atributos:
+
+- **title**: Nombre del producto.
+- **price**: Precio del producto.
+- **stock**: Cantidad disponible.
+- **category**: Categoría del producto.
+- **photo**: URL de la foto del producto.
+
+##### **5.2. Vista de Creación de Producto (`products.handlebars`)**
+
+```html
+<form id="productForm">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" class="form-control" id="price" name="price" required>
+  </div>
+  <div class="mb-3">
+    <label for="stock" class="form-label">Stock</label>
+    <input type="number" class="form-control" id="stock" name="stock" required>
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <input type="text" class="form-control" id="category" name="category" required>
+  </div>
+  <div class="mb-3">
+    <label for="photo" class="form-label">Photo URL</label>
+    <input type="text" class="form-control" id="photo" name="photo" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Product</button>
+</form>
+```
+
+##### **5.3. Controladores de Productos**
+
+El controlador de productos tiene métodos para leer, crear, actualizar y eliminar productos utilizando `products.manager.js`.
+
+```javascript
+async function createProduct(req, res, next) {
+  try {
+    const data = req.body;
+    const responseManager = await productsManager.create(data);
+    return res.status(201).json({ message: "PRODUCT CREATED", response: responseManager });
+  } catch (error) {
+    return next(error);
+  }
+}
+```
+
+##### **5.4. Socket.IO para la Creación de Productos**
+
+Al crear un nuevo producto, el cliente envía los datos a través de un socket que los maneja en el backend, emitiendo un evento para actualizar la lista de productos.
+
+```javascript
+socket.on("new product", async (data) => {
+  // Verificación y creación del producto
+});
+```
+
+---
+
+#### **6. Sesiones y Logout**
+
+##### **6.1. Middleware de Usuario**
+Este middleware permite que los datos del usuario estén disponibles en todas las vistas, lo que facilita mostrar el nombre del usuario en el `navbar` cuando está autenticado.
+
+```javascript
+server.use(userRender);
+```
+
+##### **6.2. Controlador de Logout**
+
+```javascript
+const logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) return res.status(500).send("Logout Error");
+    res.redirect("/users/login");
+  });
+};
+```
+
+---
+
+#### **7. Conclusión**
+
+Este proyecto cubre la gestión completa de usuarios y productos utilizando Handlebars para la visualización, Socket.IO para la interacción en tiempo real y el sistema de archivos (`fs`) para el almacenamiento de datos. La estructura modular del código facilita la escalabilidad y mantenimiento.
 # E-commers-server
 
 # Documentación del Servidor Node.js
