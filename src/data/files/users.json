@@ -61,5 +61,12 @@
     "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
     "id": "95cec5ab21b50adb51083392",
     "isOnline": "False"
+  },
+  {
+    "name": "Javier Mendoza",
+    "email": "javi.men@codermail.com",
+    "password": "qwerty",
+    "photo": "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+    "id": "9dc77aa61cbcd5deb0cf2c42"
   }
 ]

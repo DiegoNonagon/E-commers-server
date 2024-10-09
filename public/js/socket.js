@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
       responseMessage.style.color = "green";
     });
 
+    form.reset();
+
     socket.on("registrationError", (errorMessage) => {
       responseMessage.textContent = errorMessage;
       responseMessage.style.color = "red";

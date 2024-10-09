@@ -65,6 +65,20 @@ const socketCb = async (socket) => {
     console.error("Error fetching products:", error);
     socket.emit("update products", []);
   }
+
+  // Manejo de eliminación de productos
+  socket.on("delete product", async (productId) => {
+    try {
+      await productsManager.delete(productId);
+      const allProducts = await productsManager.readAll();
+
+      socket.emit("productDeleted", productId); // Emitir eliminación a todos
+      socket.broadcast.emit("update products", allProducts); // Actualizar la lista en todos los clientes
+    } catch (error) {
+      console.error("Error eliminando producto:", error);
+      socket.emit("productError", "Error al eliminar el producto.");
+    }
+  });
 };
 
 export default socketCb;
