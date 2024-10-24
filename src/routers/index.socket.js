@@ -79,6 +79,26 @@ const socketCb = async (socket) => {
       socket.emit("productError", "Error al eliminar el producto.");
     }
   });
+
+  socket.on("login user", async (data) => {
+    const { email, password } = data;
+    try {
+      // Verificar los datos del usuario (ejemplo)
+      const users = await usersManager.readAll();
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (user) {
+        socket.emit("loginSuccess", "Login exitoso. Bienvenido!");
+      } else {
+        socket.emit("loginError", "Credenciales incorrectas.");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      socket.emit("loginError", "Ocurrió un error en el servidor.");
+    }
+  });
 };
 
 export default socketCb;

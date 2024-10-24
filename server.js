@@ -21,15 +21,6 @@ try {
   tcpServer.on("connection", socketCb);
   httpServer.listen(port, ready);
 
-  server.use(
-    session({
-      secret: "tu_secreto_aqui", // Cambia esto a un secreto seguro
-      resave: false,
-      saveUninitialized: true,
-      cookie: { secure: false },
-    })
-  );
-
   server.use(express.urlencoded({ extended: true }));
   server.use(express.json());
   server.use(cors());
@@ -40,6 +31,27 @@ try {
   server.engine("handlebars", engine());
   server.set("view engine", "handlebars");
   server.set("views", __dirname + "/src/views");
+
+  server.use(
+    session({
+      secret: "tu_secreto_aqui", // Cambia esto a un secreto seguro
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: false },
+    })
+  );
+  server.use((req, res, next) => {
+    if (req.session) {
+      req.session.save((err) => {
+        if (err) {
+          console.log("Error saving session:", err);
+        }
+        next();
+      });
+    } else {
+      next();
+    }
+  });
 
   server.use(router);
   server.use(userRender);

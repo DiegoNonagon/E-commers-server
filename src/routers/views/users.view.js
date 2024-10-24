@@ -11,7 +11,7 @@ const usersViewRouter = Router();
 
 usersViewRouter.get("/login", loginView);
 usersViewRouter.get("/register", registerView);
-usersViewRouter.post("/login", validateUser);
+usersViewRouter.post("/validateUser", validateUser);
 usersViewRouter.get("/dashboard", dashboardView);
 usersViewRouter.get("/logout", logout);
 
