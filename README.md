@@ -1,3 +1,88 @@
+### Documentación de la entrega final del proyecto para backend avanzado 1
+
+#### 1. **Objetivo del Proyecto**
+
+Este proyecto busca construir un servidor backend completo en **Node.js** que integre distintos tipos de bases de datos (memoria, sistema de archivos y MongoDB) para gestionar datos de usuarios, productos y carritos de compra. La estructura permite administrar los datos a través de una API RESTful, con operaciones CRUD y endpoints específicos para cada recurso.
+
+---
+
+#### 2. **Tecnologías y Herramientas Utilizadas**
+
+- **Node.js**: Entorno de ejecución para la lógica del backend.
+- **MongoDB**: Base de datos principal para persistencia de datos.
+- **Mongoose**: ODM para modelar los datos en MongoDB.
+- **mongoose-paginate-v2**: Paginador para consultas de MongoDB.
+- **dotenv**: Para gestionar variables de entorno.
+- **Postman**: Herramienta para probar los endpoints de la API.
+
+---
+
+#### 3. **Estructura del Proyecto**
+
+- **Bases de Datos**: Se implementaron tres tipos de bases de datos:
+  - **Memory Storage**: Para almacenar datos temporalmente durante la sesión.
+  - **File System**: Almacenamiento en archivos para persistencia básica.
+  - **MongoDB**: Para persistencia de datos avanzada y consultas complejas.
+- **Modelo de Datos y Managers**:
+  - **Manager Genérico (MongoManager)**: Clase genérica que abstrae la lógica de CRUD de MongoDB, lo cual facilita la reutilización en cada modelo.
+  - **Usuarios, Productos y Carritos**: Cada uno de estos recursos tiene su propio modelo, manager y controlador, basado en MongoManager.
+
+---
+
+#### 4. **Desarrollo de CRUD con MongoDB**
+
+- **Métodos CRUD en el Manager Genérico**:
+
+  - **create**: Método para crear nuevos documentos en MongoDB.
+  - **readAll**: Devuelve todos los documentos según el filtro aplicado.
+  - **paginate**: Permite paginar resultados.
+  - **read**: Encuentra un documento específico por su `uid`.
+  - **update**: Actualiza un documento existente.
+  - **destroy**: Elimina un documento.
+
+- **Controladores y Rutas**:
+  - Los controladores gestionan la lógica de cada operación, mientras que las rutas exponen los endpoints RESTful:
+    - **POST** `/api/users` - Crear un usuario
+    - **GET** `/api/users` - Obtener todos los usuarios
+    - **GET** `/api/users/:uid` - Obtener un usuario específico
+    - **PUT** `/api/users/:uid` - Actualizar un usuario específico
+    - **DELETE** `/api/users/:uid` - Eliminar un usuario específico
+
+#### 5. **Pruebas con Postman**
+
+- **Uso de Postman para pruebas**: Cada endpoint se probó en Postman enviando solicitudes con los parámetros necesarios en la URL o en el cuerpo de la solicitud. Esto incluye verificar la creación, lectura, actualización y eliminación de usuarios, productos y carritos.
+
+---
+
+#### 6. **Paginación e Indexación**
+
+- **mongoose-paginate-v2**: Se utilizó este paquete para implementar paginación en las consultas de usuarios, productos y carritos, permitiendo manejar grandes volúmenes de datos de manera eficiente.
+- **Indexación**:
+  - Se implementaron índices en MongoDB para mejorar el rendimiento en campos utilizados frecuentemente en las consultas, como el `email` en usuarios y `nombre` en productos.
+
+---
+
+#### 7. **Populación en MongoDB (Populate)**
+
+- **Carritos**: Para los carritos, se utilizaron operaciones de agregación y el método `populate` de Mongoose. Esto permite incluir automáticamente la información del producto en cada entrada del carrito, simplificando la consulta al frontend.
+
+---
+
+#### 8. **Variables de Entorno**
+
+- **dotenv**: Se usó para manejar configuraciones sensibles y específicas del entorno, como las credenciales de MongoDB y el puerto del servidor. Las variables se definen en un archivo `.env`, evitando incluir información confidencial en el código fuente.
+
+---
+
+#### 9. **Arquitectura del Proyecto**
+
+- **Modularización**: Cada recurso (usuarios, productos, carritos) tiene su propia estructura de rutas, controladores y managers.
+- **Middleware**: Se incluyó middleware para el manejo de errores y para controlar el flujo de peticiones en el servidor.
+
+---
+
+Este proyecto demuestra una implementación completa de un servidor backend que permite operaciones de gestión de usuarios, productos y carritos en múltiples sistemas de bases de datos, con una arquitectura escalable y reutilizable.
+
 ### Documentación del Second challenge: Implementación de Registro, Login y Gestión de Productos
 
 ---
@@ -49,6 +134,7 @@ El proyecto está organizado de la siguiente manera:
 #### **3. Registro de Usuarios**
 
 ##### **3.1. Estructura de Usuario**
+
 Cada usuario tiene los siguientes atributos:
 
 - **name**: Nombre del usuario.
@@ -64,19 +150,25 @@ El formulario para registrar un nuevo usuario tiene los campos `name`, `email`, 
 <form id="registerForm">
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" name="name" required>
+    <input type="text" class="form-control" id="name" name="name" required />
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email" required>
+    <input type="email" class="form-control" id="email" name="email" required />
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="password" required>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      required
+    />
   </div>
   <div class="mb-3">
     <label for="photo" class="form-label">Photo URL</label>
-    <input type="text" class="form-control" id="photo" name="photo" required>
+    <input type="text" class="form-control" id="photo" name="photo" required />
   </div>
   <button type="submit" class="btn btn-primary">Register</button>
 </form>
@@ -115,11 +207,17 @@ socket.on("new user", async (data) => {
 <form id="loginForm">
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email" required>
+    <input type="email" class="form-control" id="email" name="email" required />
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="password" required>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      required
+    />
   </div>
   <button type="submit" class="btn btn-primary">Login</button>
 </form>
@@ -145,6 +243,7 @@ Cuando el usuario se loguea correctamente, se redirige al **dashboard** donde pu
 #### **5. Gestión de Productos**
 
 ##### **5.1. Estructura de Producto**
+
 Cada producto tiene los siguientes atributos:
 
 - **title**: Nombre del producto.
@@ -159,23 +258,41 @@ Cada producto tiene los siguientes atributos:
 <form id="productForm">
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title" name="title" required>
+    <input type="text" class="form-control" id="title" name="title" required />
   </div>
   <div class="mb-3">
     <label for="price" class="form-label">Price</label>
-    <input type="number" class="form-control" id="price" name="price" required>
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      name="price"
+      required
+    />
   </div>
   <div class="mb-3">
     <label for="stock" class="form-label">Stock</label>
-    <input type="number" class="form-control" id="stock" name="stock" required>
+    <input
+      type="number"
+      class="form-control"
+      id="stock"
+      name="stock"
+      required
+    />
   </div>
   <div class="mb-3">
     <label for="category" class="form-label">Category</label>
-    <input type="text" class="form-control" id="category" name="category" required>
+    <input
+      type="text"
+      class="form-control"
+      id="category"
+      name="category"
+      required
+    />
   </div>
   <div class="mb-3">
     <label for="photo" class="form-label">Photo URL</label>
-    <input type="text" class="form-control" id="photo" name="photo" required>
+    <input type="text" class="form-control" id="photo" name="photo" required />
   </div>
   <button type="submit" class="btn btn-primary">Create Product</button>
 </form>
@@ -190,7 +307,9 @@ async function createProduct(req, res, next) {
   try {
     const data = req.body;
     const responseManager = await productsManager.create(data);
-    return res.status(201).json({ message: "PRODUCT CREATED", response: responseManager });
+    return res
+      .status(201)
+      .json({ message: "PRODUCT CREATED", response: responseManager });
   } catch (error) {
     return next(error);
   }
@@ -212,6 +331,7 @@ socket.on("new product", async (data) => {
 #### **6. Sesiones y Logout**
 
 ##### **6.1. Middleware de Usuario**
+
 Este middleware permite que los datos del usuario estén disponibles en todas las vistas, lo que facilita mostrar el nombre del usuario en el `navbar` cuando está autenticado.
 
 ```javascript
@@ -234,6 +354,7 @@ const logout = (req, res) => {
 #### **7. Conclusión**
 
 Este proyecto cubre la gestión completa de usuarios y productos utilizando Handlebars para la visualización, Socket.IO para la interacción en tiempo real y el sistema de archivos (`fs`) para el almacenamiento de datos. La estructura modular del código facilita la escalabilidad y mantenimiento.
+
 # E-commers-server
 
 # Documentación del Servidor Node.js
@@ -376,8 +497,8 @@ Middleware que valida los datos de un producto antes de que sean procesados por 
 Se implementó un middleware para gestionar errores globalmente y proporcionar respuestas más claras al cliente.
 
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.statusCode || 500).json({ message: err.message });
+console.error(err);
+res.status(err.statusCode || 500).json({ message: err.message });
 });
 
 ## Pruebas con Postman

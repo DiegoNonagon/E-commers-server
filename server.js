@@ -1,3 +1,4 @@
+import "dotenv/config.js";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
@@ -11,11 +12,15 @@ import { Server } from "socket.io";
 import socketCb from "./src/routers/index.socket.js";
 import session from "express-session";
 import userRender from "./src/middlewares/userRender.mid.js";
+import dbConnect from "./src/utils/db.util.js";
 
 try {
   const server = express();
-  const port = 8000;
-  const ready = () => console.log("server ready on port " + port);
+  const port = process.env.PORT || 8000;
+  const ready = () => {
+    console.log("server ready on port " + port);
+    dbConnect();
+  };
   const httpServer = createServer(server);
   const tcpServer = new Server(httpServer);
   tcpServer.on("connection", socketCb);
