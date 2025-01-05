@@ -1,3 +1,4 @@
+import "dotenv/config.js";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
@@ -11,24 +12,19 @@ import { Server } from "socket.io";
 import socketCb from "./src/routers/index.socket.js";
 import session from "express-session";
 import userRender from "./src/middlewares/userRender.mid.js";
+import dbConnect from "./src/utils/db.util.js";
 
 try {
   const server = express();
-  const port = 8000;
-  const ready = () => console.log("server ready on port " + port);
+  const port = process.env.PORT || 8000;
+  const ready = () => {
+    console.log("server ready on port " + port);
+    dbConnect();
+  };
   const httpServer = createServer(server);
   const tcpServer = new Server(httpServer);
   tcpServer.on("connection", socketCb);
   httpServer.listen(port, ready);
-
-  server.use(
-    session({
-      secret: "tu_secreto_aqui", // Cambia esto a un secreto seguro
-      resave: false,
-      saveUninitialized: true,
-      cookie: { secure: false },
-    })
-  );
 
   server.use(express.urlencoded({ extended: true }));
   server.use(express.json());
@@ -40,6 +36,27 @@ try {
   server.engine("handlebars", engine());
   server.set("view engine", "handlebars");
   server.set("views", __dirname + "/src/views");
+
+  server.use(
+    session({
+      secret: "tu_secreto_aqui", // Cambia esto a un secreto seguro
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: false },
+    })
+  );
+  server.use((req, res, next) => {
+    if (req.session) {
+      req.session.save((err) => {
+        if (err) {
+          console.log("Error saving session:", err);
+        }
+        next();
+      });
+    } else {
+      next();
+    }
+  });
 
   server.use(router);
   server.use(userRender);

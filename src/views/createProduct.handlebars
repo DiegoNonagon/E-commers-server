@@ -1,26 +1,54 @@
-<div class="container m-5 "></div>
-    <h2 class="m-4">Crear un nuevo producto</h2>
-    <form id="createProductForm">
-      <div class="m-3">
-        <label for="title" class="form-label">Titulo</label>
-        <input type="text" class="form-control" id="title" name="title" required>
-      </div>
-      <div class="m-3">
-        <label for="price" class="form-label">Precio</label>
-        <input type="number" class="form-control" id="price" name="price" required>
-      </div>
-      <div class="m-3">
-        <label for="stock" class="form-label">Stock</label>
-        <input type="number" class="form-control" id="stock" name="stock" required>
-      </div>
-      <div class="m-3">
-        <label for="category" class="form-label">Categoría</label>
-        <input type="text" class="form-control" id="category" name="category" required>
-      </div>
-      <div class="m-3">
-        <label for="photo" class="form-label">Image URL</label>
-        <input type="text" class="form-control" id="photo" name="photo">
-      </div>
-      <button type="submit" class="btn btn-warning m-3">Crear Producto</button>
-    </form>
-  </div>
+<div class="container m-5">
+  <h2 class="m-4">Crear un nuevo producto</h2>
+  <form id="createProductForm">
+    <div class="m-3">
+      <label for="title" class="form-label">Título</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        required
+      />
+    </div>
+    <div class="m-3">
+      <label for="price" class="form-label">Precio</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        required
+      />
+    </div>
+    <div class="m-3">
+      <label for="stock" class="form-label">Stock</label>
+      <input
+        type="number"
+        class="form-control"
+        id="stock"
+        name="stock"
+        required
+      />
+    </div>
+    <div class="m-3">
+      <label for="category" class="form-label">Categoría</label>
+      <input
+        type="text"
+        class="form-control"
+        id="category"
+        name="category"
+        required
+      />
+    </div>
+    <div class="m-3">
+      <label for="photo" class="form-label">URL de la Imagen</label>
+      <input type="text" class="form-control" id="photo" name="photo" />
+    </div>
+    <button type="submit" class="btn btn-warning m-3">Crear Producto</button>
+  </form>
+
+  <h3 class="m-4">Lista de productos</h3>
+  <div id="productsContainer" class="row"></div>
+  <!-- Contenedor de tarjetas de productos -->
+</div>

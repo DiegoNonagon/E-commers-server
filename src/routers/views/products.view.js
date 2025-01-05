@@ -4,6 +4,7 @@ import {
   showProducts,
   createProduct,
   createProductView,
+  destroyProduct,
 } from "../../controllers/fs/products.controller.js";
 
 const productsViewRouter = Router();
@@ -15,5 +16,6 @@ productsViewRouter.get("/create", createProductView);
 productsViewRouter.post("/create", createProduct);
 productsViewRouter.get("/", showProducts);
 productsViewRouter.get("/:pid", showOneProduct);
+productsViewRouter.delete("/:pid", destroyProduct);
 
 export default productsViewRouter;

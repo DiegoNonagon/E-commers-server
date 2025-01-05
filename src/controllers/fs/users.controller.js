@@ -135,9 +135,10 @@ const validateUser = async (req, res, next) => {
     const user = await usersManager.validateUser(email, password);
     if (user) {
       req.session.user = user; // Almacena el usuario en la sesión
+      console.log("Usuario almacenado en sesión:", req.session.user);
       return res.redirect("/users/dashboard"); // Redirige al dashboard
     } else {
-      return res.status(401).render("login", { error: "Invalid credentials" }); // Muestra el error
+      return res.status(401).render("login", { error: "Invalid credentials" });
     }
   } catch (error) {
     return next(error);
@@ -145,12 +146,18 @@ const validateUser = async (req, res, next) => {
 };
 
 const dashboardView = (req, res, next) => {
-  if (!req.session.user) {
-    return res.redirect("/login"); // Redirige si no está autenticado
-  }
+  try {
+    if (!req.session.user) {
+      console.log("No user in session, redirecting to login");
+      return res.redirect("/users/login"); // Redirige si no está autenticado
+    }
 
-  const user = req.session.user; // Obtén el usuario de la sesión
-  return res.render("dashboard", { user }); // Renderiza el dashboard con el usuario
+    console.log("User in session:", req.session.user);
+    const user = req.session.user; // Obtén el usuario de la sesión
+    return res.render("dashboard", { user }); // Renderiza el dashboard con el usuario
+  } catch (error) {
+    return next(error);
+  }
 };
 
 const logout = (req, res) => {
